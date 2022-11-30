@@ -7,6 +7,8 @@ namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain;
 /// </summary>
 public sealed class RecordBuilder
 {
+    private ImmutableDictionary<string, object> _record = ImmutableDictionary<string, object>.Empty;
+
     internal RecordBuilder()
     {
     }
@@ -24,6 +26,4 @@ public sealed class RecordBuilder
     /// End the fluent chain and returns the "record".
     /// </summary>
     public ImmutableDictionary<string, object> End() => this._record;
-
-    private ImmutableDictionary<string, object> _record = ImmutableDictionary<string, object>.Empty;
 }

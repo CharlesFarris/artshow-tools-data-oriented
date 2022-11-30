@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 
 namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain;
 
@@ -9,6 +8,8 @@ namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain;
 /// <typeparam name="T">The homogenous type stored in the index.</typeparam>
 public sealed class IndexBuilder<T>
 {
+    private ImmutableDictionary<string, object> _record = ImmutableDictionary<string, object>.Empty;
+
     internal IndexBuilder()
     {
     }
@@ -18,7 +19,7 @@ public sealed class IndexBuilder<T>
     /// </summary>
     public IndexBuilder<T> Add(string key, T value)
     {
-        this._record = this._record.Add(key, value);
+        this._record = this._record.Add(key, value!);
         return this;
     }
 
@@ -26,6 +27,4 @@ public sealed class IndexBuilder<T>
     /// Ends the fluent chain and returns the "index".
     /// </summary>
     public ImmutableDictionary<string, object> End() => this._record;
-
-    private ImmutableDictionary<string, object> _record = ImmutableDictionary<string, object>.Empty;
 }

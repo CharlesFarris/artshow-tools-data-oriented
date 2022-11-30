@@ -1,7 +1,7 @@
 namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain.Tests;
 
 /// <summary>
-/// Tests for <see cref="Medium"/>.
+/// Tests for <see cref="Medium" />.
 /// </summary>
 internal static class Tests
 {

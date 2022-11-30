@@ -3,47 +3,10 @@
 namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain.Tests;
 
 /// <summary>
-/// Tests for <see cref="Generic"/>.
+/// Tests for <see cref="Generic" />.
 /// </summary>
 internal static class GenericTests
 {
-    [Test]
-    public static void Get_ValidatesBehavior()
-    {
-        // use case #1
-        {
-            var result = Generic.Get(TestData, "mediumsById", "1160A622-2820-4C43-B66B-660B99F8E485");
-            Assert.That(result, Is.Not.Null);
-            Assert.Multiple(() => { Assert.That(result, Is.TypeOf<ImmutableDictionary<string, object>>()); });
-        }
-
-        // use case #2
-        {
-            var result = Generic.Get(TestData, "mediumsById", "1160A622-2820-4C43-B66B-660B99F8E485", "name");
-            Assert.That(result, Is.EqualTo("None"));
-        }
-    }
-
-    [Test]
-    public static void Exists_ValidatesBehavior()
-    {
-        Assert.Multiple(() =>
-        {
-            Assert.That(Generic.Exists(TestData, "artworksById"), Is.True);
-            Assert.That(Generic.Exists(TestData, "notExists"), Is.False);
-        });
-    }
-
-    [Test]
-    public static void Map_ValidatesBehavior()
-    {
-        var collection = Generic.BeginCollection()
-            .Add("A", "B", "C", "D")
-            .End();
-        var result = Generic.Map(collection, value => ((string)value).ToLowerInvariant());
-        CollectionAssert.AreEqual(new[] { "a", "b", "c", "d" }, result);
-    }
-
     private static readonly ImmutableDictionary<string, object> TestData = Generic
         .BeginRecord()
         .AddProperty("mediumsById", Generic.BeginRecordIndex()
@@ -78,4 +41,40 @@ internal static class GenericTests
                 .End())
             .End())
         .End();
+
+    [Test]
+    public static void Get_ValidatesBehavior()
+    {
+        // use case #1
+        {
+            var result = Generic.Get(TestData, "mediumsById", "1160A622-2820-4C43-B66B-660B99F8E485");
+            Assert.That(result, Is.TypeOf<ImmutableDictionary<string, object>>());
+        }
+
+        // use case #2
+        {
+            var result = Generic.Get(TestData, "mediumsById", "1160A622-2820-4C43-B66B-660B99F8E485", "name");
+            Assert.That(result, Is.EqualTo("None"));
+        }
+    }
+
+    [Test]
+    public static void Exists_ValidatesBehavior()
+    {
+        Assert.Multiple(() =>
+        {
+            Assert.That(Generic.Exists(TestData, "artworksById"), Is.True);
+            Assert.That(Generic.Exists(TestData, "notExists"), Is.False);
+        });
+    }
+
+    [Test]
+    public static void Map_ValidatesBehavior()
+    {
+        var collection = Generic.BeginCollection()
+            .Add("A", "B", "C", "D")
+            .End();
+        var result = Generic.Map(collection, value => ((string)value).ToLowerInvariant());
+        CollectionAssert.AreEqual(new[] { "a", "b", "c", "d" }, result);
+    }
 }

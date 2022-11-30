@@ -8,5 +8,8 @@ public static class Medium
     /// <summary>
     /// Gets a medium record by ID.
     /// </summary>
-    public static object GetMediumById(object data, string id) => Generic.Get(data, "mediumsById", id);
+    public static object GetMediumById(object data, string id)
+    {
+        return Generic.Get(data, "mediumsById", id);
+    }
 }

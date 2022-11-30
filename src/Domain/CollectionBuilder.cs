@@ -7,6 +7,8 @@ namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain;
 /// </summary>
 public sealed class CollectionBuilder
 {
+    private ImmutableList<object> _collection = ImmutableList<object>.Empty;
+
     internal CollectionBuilder()
     {
     }
@@ -34,6 +36,4 @@ public sealed class CollectionBuilder
     /// </summary>
     /// <returns></returns>
     public ImmutableList<object> End() => this._collection;
-
-    private ImmutableList<object> _collection = ImmutableList<object>.Empty;
 }
