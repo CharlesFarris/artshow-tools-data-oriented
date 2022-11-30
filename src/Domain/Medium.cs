@@ -1,9 +1,12 @@
 ﻿namespace SleepingBearSystems.ArtShowToolsDataOriented.Domain;
 
 /// <summary>
-/// Domain object representing a artwork medium.
+/// Module containing methods related to mediums.
 /// </summary>
-public sealed class Medium
+public static class Medium
 {
-
+    /// <summary>
+    /// Gets a medium record by ID.
+    /// </summary>
+    public static object GetMediumById(object data, string id) => Generic.Get(data, "mediumsById", id);
 }
