@@ -20,6 +20,12 @@ public static class Generic
         data.Select(mapFunc);
 
     /// <summary>
+    /// Filters the value of collection
+    /// </summary>
+    public static IEnumerable<object> Filter(IEnumerable<object> data, Func<object, bool> predicate) =>
+        data.Where(predicate);
+
+    /// <summary>
     /// Check if a value exists using the supplied path.
     /// </summary>
     public static bool Exists(object data, params string[] path)
