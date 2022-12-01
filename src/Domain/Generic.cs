@@ -10,8 +10,8 @@ public static class Generic
     /// <summary>
     /// Gets the value using the supplied path.
     /// </summary>
-    public static object Get(object data, params string[] path) => path.Aggregate(data,
-        (current, key) => ((ImmutableDictionary<string, object>)current)[key]);
+    public static object Get(object data, params string[] path) =>
+        path.Aggregate(data, (current, key) => ((ImmutableDictionary<string, object>)current)[key]);
 
     /// <summary>
     /// Maps the values of a collection.
