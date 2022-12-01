@@ -93,9 +93,9 @@ internal static class GenericTests
     {
         var builder = Generic.BeginRecordIndex();
         Assert.That(builder, Is.Not.Null);
-        var record = builder.End();
-        Assert.That(record, Is.InstanceOf<ImmutableDictionary<string, object>>());
-        Assert.That(record, Is.Empty);
+        var index = builder.End();
+        Assert.That(index, Is.InstanceOf<ImmutableDictionary<string, object>>());
+        Assert.That(index, Is.Empty);
     }
 
     [Test]
@@ -113,8 +113,8 @@ internal static class GenericTests
     {
         var builder = Generic.BeginIndex<string>();
         Assert.That(builder, Is.Not.Null);
-        var record = builder.End();
-        Assert.That(record, Is.InstanceOf<ImmutableDictionary<string, object>>());
-        Assert.That(record, Is.Empty);
+        var index = builder.End();
+        Assert.That(index, Is.InstanceOf<ImmutableDictionary<string, object>>());
+        Assert.That(index, Is.Empty);
     }
 }
