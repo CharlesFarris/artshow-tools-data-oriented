@@ -77,4 +77,44 @@ internal static class GenericTests
         var result = Generic.Map(collection, value => ((string)value).ToLowerInvariant());
         CollectionAssert.AreEqual(new[] { "a", "b", "c", "d" }, result);
     }
+
+    [Test]
+    public static void BeginRecord_ValidatesBehavior()
+    {
+        var builder = Generic.BeginRecord();
+        Assert.That(builder, Is.Not.Null);
+        var record = builder.End();
+        Assert.That(record, Is.InstanceOf<ImmutableDictionary<string, object>>());
+        Assert.That(record, Is.Empty);
+    }
+
+    [Test]
+    public static void BeginRecordIndex_ValidatesBehavior()
+    {
+        var builder = Generic.BeginRecordIndex();
+        Assert.That(builder, Is.Not.Null);
+        var record = builder.End();
+        Assert.That(record, Is.InstanceOf<ImmutableDictionary<string, object>>());
+        Assert.That(record, Is.Empty);
+    }
+
+    [Test]
+    public static void BeginCollection_ValidatesBehavior()
+    {
+        var builder = Generic.BeginCollection();
+        Assert.That(builder, Is.Not.Null);
+        var collection = builder.End();
+        Assert.That(collection, Is.InstanceOf<ImmutableList<object>>());
+        Assert.That(collection, Is.Empty);
+    }
+
+    [Test]
+    public static void BeginIndex_ValidatesBehavior()
+    {
+        var builder = Generic.BeginIndex<string>();
+        Assert.That(builder, Is.Not.Null);
+        var record = builder.End();
+        Assert.That(record, Is.InstanceOf<ImmutableDictionary<string, object>>());
+        Assert.That(record, Is.Empty);
+    }
 }
